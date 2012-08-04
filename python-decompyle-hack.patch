@@ -1,0 +1,60 @@
+diff -urN decompyle-2.3.2.orig.org/decompyle/marshal_20.c decompyle-2.3.2.orig/decompyle/marshal_20.c
+--- decompyle-2.3.2.orig.org/decompyle/marshal_20.c	2004-12-14 13:29:31.000000000 +0100
++++ decompyle-2.3.2.orig/decompyle/marshal_20.c	2012-08-04 16:24:25.000000000 +0200
+@@ -8,7 +8,16 @@
+ #include "Python.h"
+ #include "longintrepr.h"
+ #include "compile.h"
++#define PyMarshal_WriteLongToFile PyMarshal_WriteLongToFile_hack
++#define PyMarshal_WriteObjectToFile PyMarshal_WriteObjectToFile_hack
++#define PyMarshal_ReadObjectFromString PyMarshal_ReadObjectFromString_hack
++#define PyMarshal_WriteObjectToString PyMarshal_WriteObjectToString_hack
+ #include "marshal.h"
++#undef PyMarshal_WriteLongToFile
++#undef PyMarshal_WriteObjectToFile
++#undef PyMarshal_ReadObjectFromString
++#undef PyMarshal_WriteObjectToString
++PyObject *PyMarshal_ReadObjectFromString(char *str, int len);
+ 
+ /* High water mark to determine when the marshalled object is dangerously deep
+  * and risks coring the interpreter.  When the object stack gets this deep,
+diff -urN decompyle-2.3.2.orig.org/decompyle/marshal_22.c decompyle-2.3.2.orig/decompyle/marshal_22.c
+--- decompyle-2.3.2.orig.org/decompyle/marshal_22.c	2004-12-14 13:29:31.000000000 +0100
++++ decompyle-2.3.2.orig/decompyle/marshal_22.c	2012-08-04 16:24:25.000000000 +0200
+@@ -8,7 +8,16 @@
+ #include "Python.h"
+ #include "longintrepr.h"
+ #include "compile.h"
++#define PyMarshal_WriteLongToFile PyMarshal_WriteLongToFile_hack
++#define PyMarshal_WriteObjectToFile PyMarshal_WriteObjectToFile_hack
++#define PyMarshal_ReadObjectFromString PyMarshal_ReadObjectFromString_hack
++#define PyMarshal_WriteObjectToString PyMarshal_WriteObjectToString_hack
+ #include "marshal.h"
++#undef PyMarshal_WriteLongToFile
++#undef PyMarshal_WriteObjectToFile
++#undef PyMarshal_ReadObjectFromString
++#undef PyMarshal_WriteObjectToString
++PyObject *PyMarshal_ReadObjectFromString(char *str, int len);
+ 
+ /* High water mark to determine when the marshalled object is dangerously deep
+  * and risks coring the interpreter.  When the object stack gets this deep,
+diff -urN decompyle-2.3.2.orig.org/decompyle/marshal_23.c decompyle-2.3.2.orig/decompyle/marshal_23.c
+--- decompyle-2.3.2.orig.org/decompyle/marshal_23.c	2004-12-14 13:29:31.000000000 +0100
++++ decompyle-2.3.2.orig/decompyle/marshal_23.c	2012-08-04 16:24:25.000000000 +0200
+@@ -8,7 +8,16 @@
+ #include "Python.h"
+ #include "longintrepr.h"
+ #include "compile.h"
++#define PyMarshal_WriteLongToFile PyMarshal_WriteLongToFile_hack
++#define PyMarshal_WriteObjectToFile PyMarshal_WriteObjectToFile_hack
++#define PyMarshal_ReadObjectFromString PyMarshal_ReadObjectFromString_hack
++#define PyMarshal_WriteObjectToString PyMarshal_WriteObjectToString_hack
+ #include "marshal.h"
++#undef PyMarshal_WriteLongToFile
++#undef PyMarshal_WriteObjectToFile
++#undef PyMarshal_ReadObjectFromString
++#undef PyMarshal_WriteObjectToString
++PyObject *PyMarshal_ReadObjectFromString(char *str, int len);
+ 
+ /* High water mark to determine when the marshalled object is dangerously deep
+  * and risks coring the interpreter.  When the object stack gets this deep,
