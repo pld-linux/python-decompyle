@@ -58,3 +58,41 @@ diff -urN decompyle-2.3.2.orig.org/decompyle/marshal_23.c decompyle-2.3.2.orig/d
  
  /* High water mark to determine when the marshalled object is dangerously deep
   * and risks coring the interpreter.  When the object stack gets this deep,
+diff -urN decompyle-2.3.2.orig.org/decompyle/Scanner.py decompyle-2.3.2.orig/decompyle/Scanner.py
+--- decompyle-2.3.2.orig.org/decompyle/Scanner.py	2005-01-17 14:33:17.000000000 +0100
++++ decompyle-2.3.2.orig/decompyle/Scanner.py	2012-08-04 16:47:57.656296180 +0200
+@@ -420,8 +420,8 @@
+ 
+         SETUP_LOOP    = self.dis.opmap['SETUP_LOOP']
+         BUILD_LIST    = self.dis.opmap['BUILD_LIST']
+-        FOR_ITER      = self.dis.opmap['FOR_ITER']
+-        GET_ITER      = self.dis.opmap['GET_ITER']
++        FOR_LOOP      = self.dis.opmap['FOR_LOOP']
++        FOR_LOOP      = self.dis.opmap['FOR_LOOP']
+         SETUP_EXCEPT  = self.dis.opmap['SETUP_EXCEPT']
+         JUMP_FORWARD  = self.dis.opmap['JUMP_FORWARD']
+         JUMP_ABSOLUTE = self.dis.opmap['JUMP_ABSOLUTE']
+@@ -469,7 +469,7 @@
+             i = target
+             while i < jump_back and ord(code[i])==SET_LINENO:
+                 i += 3
+-            if ord(code[i]) in (FOR_ITER, GET_ITER):
++            if ord(code[i]) in (FOR_LOOP, FOR_LOOP):
+                 loop_type = 'for'
+             else:
+                 loop_type = 'while'
+@@ -485,11 +485,11 @@
+                                    'start': jump_back+3,
+                                    'end':   end})
+         elif self.__list_comprehension(code, pos, op):
+-            get_iter = self.__first_instr(code, pos+7, end, GET_ITER)
+-            for_iter = self.__first_instr(code, get_iter, end, FOR_ITER)
++            get_iter = self.__first_instr(code, pos+7, end, FOR_LOOP)
++            for_iter = self.__first_instr(code, get_iter, end, FOR_LOOP)
+             assert(get_iter is not None and for_iter is not None)
+             start  = get_iter+1
+-            target = self.__get_target(code, for_iter, FOR_ITER)
++            target = self.__get_target(code, for_iter, FOR_LOOP)
+             end    = self.__restrict_to_parent(target, parent)
+             jump_back = self.__last_instr(code, start, end, JUMP_ABSOLUTE,
+                                           start, False)
