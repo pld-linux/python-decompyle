@@ -11,7 +11,7 @@ Source0:	http://downloads.sourceforge.net/decompyle/decompyle_%{version}.tar.gz
 Patch0:		%{name}-hack.patch
 URL:		http://sourceforge.net/projects/decompyle/
 BuildRequires:	python-devel
-BuildRequires:	rpmbuild(macros) >= 1.219
+BuildRequires:	rpmbuild(macros) >= 1.710
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
