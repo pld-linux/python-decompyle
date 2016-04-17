@@ -3,7 +3,7 @@
 Summary:	Python Decompiler
 Name:		python-%{module}
 Version:	2.3.2
-Release:	0.1
+Release:	1
 License:	BSD-like
 Group:		Development/Languages/Python
 Source0:	http://downloads.sourceforge.net/decompyle/decompyle_%{version}.tar.gz
