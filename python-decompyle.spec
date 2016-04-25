@@ -1,6 +1,6 @@
 %define		module	decompyle
 #
-Summary:	Python Decompiler
+Summary:	Python 1.5 Decompiler
 Name:		python-%{module}
 Version:	2.3.2
 Release:	1
@@ -15,8 +15,8 @@ BuildRequires:	rpmbuild(macros) >= 1.710
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Decompyle is a python disassembler and decompiler which converts
-Python byte-code (.pyc or .pyo) back into equivalent Python source.
+Decompyle is a python 1.5 disassembler and decompiler which converts
+Python 1.5 byte-code (.pyc or .pyo) back into equivalent Python source.
 Verification of the produced code (re-compiled) is avaliable as well.
 
 %prep
